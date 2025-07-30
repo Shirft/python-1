@@ -174,28 +174,39 @@ def reporte_bajo_stock():
 # Menú principal de la aplicación para interactuar con el usuario
 def menu():
     while True:
-        print(Style.BRIGHT + Fore.BLUE + "\n--- MENÚ DE INVENTARIO ---")
-        print("1. Registrar producto")
-        print("2. Ver productos")
-        print("3. Actualizar producto")
-        print("4. Eliminar producto")
-        print("5. Buscar producto")
-        print("6. Reporte bajo stock")
-        print("7. Salir")
-        opcion = input("Seleccione una opción: ")
+        try:
+            print(Style.BRIGHT + Fore.BLUE + "\n--- MENÚ DE INVENTARIO ---")
+            print("1. Registrar producto")
+            print("2. Ver productos")
+            print("3. Actualizar producto")
+            print("4. Eliminar producto")
+            print("5. Buscar producto")
+            print("6. Reporte bajo stock")
+            print("7. Salir")
+            opcion = int(input("Seleccione una opción: "))
+            
+            if opcion==0:
+                print(Fore.RED + "Opción no válida, intente de nuevo.")
 
-        if opcion == '1': registrar_producto()
-        elif opcion == '2': ver_productos()
-        elif opcion == '3': actualizar_producto()
-        elif opcion == '4': eliminar_producto()
-        elif opcion == '5': buscar_producto()
-        elif opcion == '6': reporte_bajo_stock()
-        elif opcion == '7':
-            print(Fore.MAGENTA + "Saliendo del programa...")
-            break
-        else:
+            match opcion:
+                case 1:
+                    registrar_producto()
+                case 2:
+                    ver_productos()
+                case 3:
+                    actualizar_producto()
+                case 4:
+                    eliminar_producto()
+                case 5:
+                    buscar_producto()
+                case 6:
+                    reporte_bajo_stock()
+                case 7:
+                    print(Fore.MAGENTA + "Saliendo del programa...")
+                    break
+        except ValueError:
             print(Fore.RED + "Opción no válida, intente de nuevo.")
-
+            
 # Ejecutar el menú principal
 menu()
 
